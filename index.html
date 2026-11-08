@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUK LEAGUE</title>
+<style>
+body {
+    margin: 0;
+    background: #101323;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px 15px;
+}
+h1 {
+    color: #a5ff00;
+    font-size: 38px;
+}
+#status {
+    background: #20243a;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+
+<h1>DUK LEAGUE</h1>
+<div id="status">Connecting to Firebase...</div>
+
+<script type="module">
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+import { getAuth, signInAnonymously } from
+"https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+import { getFirestore } from
+"https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCZmqKEff5jBGDjqzhpK-iTYgGBC6nQb6M",
+    authDomain: "duk-league-f1e54.firebaseapp.com",
+    projectId: "duk-league-f1e54",
+    storageBucket: "duk-league-f1e54.firebasestorage.app",
+    messagingSenderId: "847312163296",
+    appId: "1:847312163296:web:4fd0a98f2869f6e4cadb85",
+    measurementId: "G-VSE3MCY4P8"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+signInAnonymously(auth)
+.then(() => {
+    document.getElementById("status").textContent =
+    "Firebase connected successfully!";
+})
+.catch((error) => {
+    document.getElementById("status").textContent =
+    "Connection error: " + error.message;
+    console.error(error);
+});
+</script>
+
+</body>
+</html>
